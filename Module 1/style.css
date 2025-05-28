@@ -1,0 +1,353 @@
+/* ============================= */
+/*        Global Reset          */
+/* ============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================= */
+/*        Body Styling          */
+/* ============================= */
+body {
+    background: #f4f4f4 url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+/* ============================= */
+/*        Header Styles         */
+/* ============================= */
+#welcomeBanner {
+    background-color: #015081;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#mainHeader {
+    background: linear-gradient(to right, #003366);
+    padding: 20px;
+    color: white;
+    
+}
+
+/* ============================= */
+/*        Typography Styles     */
+/* ============================= */
+h2 {
+    color: #cc0000;
+    font-size: 2rem;
+    margin: 20px 0;
+    height: 75px;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3, p {
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h4 {
+    color: #cc0000;
+    font-size: 2rem;
+    margin: 20px 0;
+    height: 75px;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: yellow;
+}
+
+
+/* ============================= */
+/*        Navigation Styles     */
+/* ============================= */
+nav a {
+    text-decoration: none;
+    color: #0066cc;
+    margin-right: 15px;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    color: white;
+    background-color: #004080;
+    border-radius: 4px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    padding: 5px 0;
+}
+
+/* ============================= */
+/*        Image Styles          */
+/* ============================= */
+.event-img {
+    border: 3px solid #444;
+    padding: 4px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.event-img:hover {
+    transform: scale(1.05);
+}
+
+
+/* ============================= */
+/*        Table Styles          */
+/* ============================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+}
+
+th, td {
+    height: 150px;
+    width: 300px;
+    padding: 12px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ============================= */
+/*        Form Styles           */
+/* ============================= */
+form {
+    background-color: #fff;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 35% ;
+    border-color: #003366;
+    
+   
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    
+  
+  padding: 10px 20px;
+  margin-right: 10px;
+  
+  border-radius: 6px;
+  cursor: pointer;
+  transition: blue 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid blue;
+}
+
+/* ============================= */
+/*        Event Card Styles     */
+/* ============================= */
+.eventCard {
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+/* ============================= */
+/*     Multi-column Layout      */
+/* ============================= */
+#news {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid gray;
+    margin-top: 30px;
+}
+
+/* ============================= */
+/*     Responsive Media Query   */
+/* ============================= */
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    body {
+        font-size: 90%;
+    }
+
+    .event-img {
+        max-width: 100px;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h2, h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================= */
+/*     CTA Button Style         */
+/* ============================= */
+.cta-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* ============================= */
+/*     Visibility Examples      */
+/* ============================= */
+.hidden-example {
+    visibility: hidden;
+}
+
+.none-example {
+    display: none;
+}
+
+#box{
+    justify-content: center;
+}
+
+.Preferences{
+    background-color: #fff;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 35% ;
+}
+.video{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 40% ;
+}
+
+/* Event Feedback Section */
+#eventFeedback {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input, select, textarea styling */
+#eventFeedback input[type="text"],
+#eventFeedback select,
+#eventFeedback textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Button styling */
+#eventFeedback button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#eventFeedback button:hover {
+  background-color: #0056b3;
+}
+
+/* Fee and char count display */
+#feeDisplay,
+#charCount {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Zoomable image */
+#feedbackImage {
+  display: block;
+  margin: 10px 0;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#feedbackImage.enlarged {
+  transform: scale(2);
+  cursor: zoom-out;
+}

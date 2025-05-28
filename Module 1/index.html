@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Community Event Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #welcomeBanner {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .event-img {
+      border: 2px solid #000;
+      width: 100px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function validatePhone(field) {
+      const value = field.value;
+      if (!/^\d{10}$/.test(value)) {
+        alert("Enter a valid 10-digit phone number");
+      }
+    }
+
+    function displayFee(select) {
+      document.getElementById("feeDisplay").textContent = `Fee: $${select.value}`;
+    }
+
+    function showConfirmation() {
+      document.getElementById("formOutput").value = "Registration Submitted!";
+    }
+
+    function enlargeImage(img) {
+      img.style.width = img.style.width === "200px" ? "100px" : "200px";
+    }
+
+    function countChars(textarea) {
+      document.getElementById("charCount").textContent = textarea.value.length;
+    }
+
+    function videoReady() {
+      document.getElementById("videoStatus").textContent = "Video ready to play";
+    }
+
+    window.onbeforeunload = function () {
+      return "You have unsaved changes.";
+    }
+
+    function savePreference(select) {
+      localStorage.setItem("preferredEvent", select.value);
+    }
+
+    function loadPreference() {
+      const preferred = localStorage.getItem("preferredEvent");
+      if (preferred) {
+        document.getElementById("eventType").value = preferred;
+      }
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            document.getElementById("locationOutput").textContent =
+              `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+          },
+          (error) => {
+            document.getElementById("locationOutput").textContent =
+              `Error: ${error.message}`;
+          },
+          { enableHighAccuracy: true, timeout: 10000 }
+        );
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    window.onload = loadPreference;
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <div class="navbar">
+    <nav>
+      <a href="#home">Home</a> |
+      <a href="#events">Events</a> |
+      <a href="#contact">Contact</a> |
+      <a href="help.html" target="_blank">Help</a>
+    </nav>
+  </div>
+
+  <!-- Main -->
+  <main>
+    <section id="home">
+      <div id="welcomeBanner">
+        Welcome to the Community Portal!
+
+        <span style="color:red; font-weight:bold;">Special Offer: 50% off registration!</span>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2 class="highlight">Community Event Gallery</h2>
+      <table>
+        <caption>Past Community Events</caption>
+        <tr>
+          <td><img src="./image/event1.jpg" alt="Event 1" title="Event 1" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+          <td><img src="./image/event2.jpg" alt="Event 2" title="Event 2" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+          <td><img src="./image/event3.jpg" alt="Event 3" title="Event 3" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+        </tr>
+        <tr>
+          <td><img src="./image/event4.jpg" alt="Event 4" title="Event 4" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+          <td><img src="./image/event5.jpg" alt="Event 5" title="Event 5" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+          <td><img src="./image/event6.jpg" alt="Event 6" title="Event 6" class="event-img"
+              ondblclick="enlargeImage(this)"></td>
+        </tr>
+      </table>
+
+      <h3 class="highlight">Event Registration</h3>
+    <section id="box">
+      <form onsubmit="showConfirmation(); return false;">
+        <label>Name: <input type="text" name="name" placeholder="Enter your name" required autofocus></label><br>
+        <label>Email: <input type="email" name="email" placeholder="you@example.com" required></label><br>
+        <label>Date: <input type="date" name="date" required></label><br>
+        <label>Phone: <input type="text" name="phone" onblur="validatePhone(this)"></label><br>
+        <label>Event Type:
+          <select id="eventType" name="eventType" onchange="displayFee(this); savePreference(this);">
+            <option value="10">Music</option>
+            <option value="15">Art</option>
+            <option value="20">Sports</option>
+          </select>
+        </label> <span id="feeDisplay"></span><br>
+        <label>Message:<br>
+          <textarea name="message" onkeyup="countChars(this)"></textarea>
+          <div>Characters typed: <span id="charCount">0</span></div>
+        </label><br>
+        <button type="submit" onclick="showConfirmation()">Submit</button>
+        <output id="formOutput"></output>
+      </form>
+    </section>
+
+
+    <!-- Event Feedback Section -->
+<section id="eventFeedback">
+    <h2>Event Feedback</h2>
+
+    <!-- Phone number with onblur -->
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" placeholder="Enter phone" onblur="validatePhone()">
+
+    <!-- Dropdown with onchange -->
+    <label for="eventSelect">Choose Event:</label>
+    <select id="eventSelect" onchange="showFee()">
+        <option value="">--Select Event--</option>
+        <option value="Music" data-fee="10">Music Night</option>
+        <option value="Art" data-fee="5">Art Fair</option>
+        <option value="Tech" data-fee="15">Tech Talk</option>
+    </select>
+    <p id="feeDisplay"></p>
+
+    
+    <!-- Image with ondblclick -->
+    <h3>Click to Zoom</h3>
+    <img src="./image/event1.jpg" alt="Event Image" id="feedbackImage" ondblclick="enlargeImage()" width="200" class="event-img">
+
+    <!-- Textarea with key events -->
+    <label for="feedbackText">Your Feedback:</label>
+    <textarea id="feedbackText" rows="5" cols="40" placeholder="Write here..."></textarea>
+    <p>Character count: <span id="charCount">0</span></p>
+
+    <!-- Submit with onclick -->
+    <button onclick="submitFeedback()">Submit Feedback</button>
+
+</section>
+
+
+
+      <h2 class="h4">Save Your Preferred Event</h2>
+      <div class="Preferences">
+        
+
+        <label for="preferredEvent">Select Preferred Event Type:</label>
+        <select id="preferredEvent">
+          <option value="">--Select Event--</option>
+          <option value="Music">Music</option>
+          <option value="Art">Art</option>
+          <option value="Technology">Technology</option>
+          <option value="Sports">Sports</option>
+        </select>
+
+        <button onclick="savePreference()">Save Preference</button>
+        <button onclick="clearPreferences()">Clear Preferences</button>
+
+        <p id="preferenceStatus"></p>
+      </div>
+
+      <button onclick="getLocation()">Find Nearby Events</button>
+      <p id="locationOutput"></p>
+
+      <h3>Event Promo Video</h3>
+      <div class="video">
+        <video width="320" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      </div>
+      <div id="videoStatus"></div>
+    </section>
+
+    <section id="contact">
+      <h2 class="highlight">Contact Us</h2>
+      <p>Email: contact@localevents.org</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local Community Council</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</body>
+
+</html>
